@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysPecNSDesk", "SysPecNSDesk\SysPecNSDesk.csproj", "{76D42CE8-337D-4288-BD5E-2376F8062020}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysPecNSLib", "SysPecNSLib\SysPecNSLib.csproj", "{5820F828-67F9-45EB-AF60-710E1CF343AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76D42CE8-337D-4288-BD5E-2376F8062020}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76D42CE8-337D-4288-BD5E-2376F8062020}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76D42CE8-337D-4288-BD5E-2376F8062020}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76D42CE8-337D-4288-BD5E-2376F8062020}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5820F828-67F9-45EB-AF60-710E1CF343AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5820F828-67F9-45EB-AF60-710E1CF343AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5820F828-67F9-45EB-AF60-710E1CF343AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5820F828-67F9-45EB-AF60-710E1CF343AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E7704543-C3EA-49AF-A711-E525F86B618F}
+	EndGlobalSection
+EndGlobal
