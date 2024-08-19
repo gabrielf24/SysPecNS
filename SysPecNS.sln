@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysPecNSDesk", "SysPecNSDesk\SysPecNSDesk.csproj", "{76D42CE8-337D-4288-BD5E-2376F8062020}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SysPecNSDesk", "SysPecNSDesk\SysPecNSDesk.csproj", "{76D42CE8-337D-4288-BD5E-2376F8062020}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysPecNSLib", "SysPecNSLib\SysPecNSLib.csproj", "{5820F828-67F9-45EB-AF60-710E1CF343AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SysPecNSLib", "SysPecNSLib\SysPecNSLib.csproj", "{5820F828-67F9-45EB-AF60-710E1CF343AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
