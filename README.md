@@ -1,2 +1,2 @@
 #SysPecNS
-## Projeto treinamento c#
+## Projeto treinamento TI96 C#
