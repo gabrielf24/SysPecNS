@@ -1,3 +1,4 @@
+using SysPecNSLib;
 namespace SysPecNSDesk
 {
     public partial class Form1 : Form
@@ -17,7 +18,7 @@ namespace SysPecNSDesk
             if (txtNumero1.Text.Length > 0 && cmbOperacao.SelectedIndex > 4)
             {
                 btnConfirma.Enabled = true;
-            }         
+            }
         }
 
         private void btnConfirma_Click(object sender, EventArgs e)
@@ -68,7 +69,7 @@ namespace SysPecNSDesk
             txtNumero1.Clear();
             txtNumero2.Clear();
             cmbOperacao.Focus();
-            }
+        }
 
         private void txtNumero2_TextChanged(object sender, EventArgs e)
         {
@@ -76,9 +77,9 @@ namespace SysPecNSDesk
             {
                 btnConfirma.Enabled = true;
             }
-            else 
+            else
             {
-                btnConfirma.Enabled = false;      
+                btnConfirma.Enabled = false;
             }
         }
 
@@ -88,7 +89,7 @@ namespace SysPecNSDesk
             {
                 txtNumero2.Enabled = false;
             }
-            else 
+            else
             {
                 txtNumero2.Enabled = true;
             }
@@ -96,6 +97,20 @@ namespace SysPecNSDesk
             txtNumero2.Clear();
             txtNumero1.Focus();
             btnConfirma.Enabled = false;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Nivel nivel = new Nivel(textBox1.Text, textBox2.Text);
+            nivel.Inserir();
+            MessageBox.Show("Nivel gravado com sucesso!!!!!!!!");
+            button1.Enabled = false;
+
         }
     }
 };

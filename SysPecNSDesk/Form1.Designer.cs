@@ -34,6 +34,9 @@ namespace SysPecNSDesk
             txtNumero1 = new TextBox();
             txtNumero2 = new TextBox();
             cmbOperacao = new ComboBox();
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
+            button1 = new Button();
             SuspendLayout();
             // 
             // btnConfirma
@@ -83,11 +86,39 @@ namespace SysPecNSDesk
             cmbOperacao.TabIndex = 5;
             cmbOperacao.SelectedIndexChanged += cmbOperacao_SelectedIndexChanged;
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(469, 297);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 6;
+            textBox1.TextChanged += textBox1_TextChanged;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(575, 297);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(100, 23);
+            textBox2.TabIndex = 7;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(681, 297);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 8;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
+            Controls.Add(textBox2);
+            Controls.Add(textBox1);
             Controls.Add(cmbOperacao);
             Controls.Add(txtNumero2);
             Controls.Add(txtNumero1);
@@ -108,6 +139,8 @@ namespace SysPecNSDesk
         private TextBox txtNumero1;
         private TextBox txtNumero2;
         private ComboBox cmbOperacao;
-       
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private Button button1;
     }
 }

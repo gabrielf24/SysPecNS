@@ -19,9 +19,8 @@ namespace SysPecNSLib
             string strconn = @"server=127.0.0.1;database=syspecdb;user=root;password=";
             MySqlConnection cn = new  MySqlConnection(strconn);
             MySqlCommand cmd = new ();
-            try // 
-            {
-                cn.Open();   
+            try
+            {    cn.Open();   
                 cmd.Connection = cn;
             }
             catch(Exception) 
