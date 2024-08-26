@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using Org.BouncyCastle.Cms;
 
 namespace SysPecNSLib
 {
@@ -135,14 +136,33 @@ namespace SysPecNSLib
         public void Atualizar()
         {
             // usuario: nome, senha, nível... 
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_usuario_atleta";
+            //cmd.Parameters.Add("spid",MySqlDbType.Int32).Value = Id;
+            cmd.Parameters.AddWithValue("spid", Id);
+            cmd.Parameters.AddWithValue("spnome", Nome);
+            cmd.Parameters.AddWithValue("spnivel", Nivel.Id);
+            cmd.Parameters.AddWithValue("spsenha", Senha);
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+
         }
-        public void Arquivar() 
-        { 
-               
-        }
-        public void Restaurar()
+        public static void Arquivar(int id) 
         {
-
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"update usuarios set ativo = 0 where id = {id}";
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
+        public static void Restaurar(int id)
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"update usuarios set ativo = 1 where id = {id}";
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
         }
 
 
@@ -153,5 +173,10 @@ namespace SysPecNSLib
 
 
 
+    }
+
+    internal class MySqlDbType
+    {
+        internal static MySql.Data.MySqlClient.MySqlDbType Int32;
     }
 }
