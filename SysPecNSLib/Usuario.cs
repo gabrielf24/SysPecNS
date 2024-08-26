@@ -73,7 +73,7 @@ namespace SysPecNSLib
             Usuario usuario = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from usuarios where id = {id}";
+            cmd.CommandText = $"select * from usuarios where id = {Id}";
             var dr = cmd.ExecuteReader();
             if(dr.Read())
             {
