@@ -43,13 +43,16 @@
             label5 = new Label();
             btnInserir = new Button();
             txtId = new TextBox();
-            txtName = new TextBox();
+            txtNome = new TextBox();
             txtEmail = new TextBox();
             cmbNivel = new ComboBox();
             txtSenha = new TextBox();
             txtConfSenha = new TextBox();
             label6 = new Label();
             chkAtivo = new CheckBox();
+            btnEditar = new Button();
+            btnDeletar = new Button();
+            txtBusca = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             SuspendLayout();
             // 
@@ -95,13 +98,13 @@
             // dgvUsuarios
             // 
             dgvUsuarios.AllowUserToAddRows = false;
-            dgvUsuarios.AllowUserToDeleteRows = false;
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUsuarios.Columns.AddRange(new DataGridViewColumn[] { clnId, clnNome, clnEmail, clnNivel, clnAtivo });
             dgvUsuarios.Location = new Point(126, 284);
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.ReadOnly = true;
             dgvUsuarios.RowHeadersVisible = false;
+            dgvUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUsuarios.Size = new Size(508, 154);
             dgvUsuarios.TabIndex = 1;
             dgvUsuarios.CellContentClick += dgvUsuarios_CellContentClick;
@@ -167,15 +170,17 @@
             // 
             txtId.Location = new Point(115, 57);
             txtId.Name = "txtId";
+            txtId.ReadOnly = true;
             txtId.Size = new Size(50, 23);
             txtId.TabIndex = 8;
             // 
-            // txtName
+            // txtNome
             // 
-            txtName.Location = new Point(171, 57);
-            txtName.Name = "txtName";
-            txtName.Size = new Size(227, 23);
-            txtName.TabIndex = 9;
+            txtNome.Location = new Point(171, 57);
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(227, 23);
+            txtNome.TabIndex = 9;
+            txtNome.TextChanged += txtNome_TextChanged;
             // 
             // txtEmail
             // 
@@ -200,6 +205,7 @@
             txtSenha.Size = new Size(100, 23);
             txtSenha.TabIndex = 12;
             txtSenha.UseSystemPasswordChar = true;
+            txtSenha.TextChanged += txtSenha_TextChanged;
             // 
             // txtConfSenha
             // 
@@ -228,18 +234,47 @@
             chkAtivo.Text = "Ativo";
             chkAtivo.UseVisualStyleBackColor = true;
             // 
+            // btnEditar
+            // 
+            btnEditar.Location = new Point(221, 203);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(75, 23);
+            btnEditar.TabIndex = 16;
+            btnEditar.Text = "&Editar";
+            btnEditar.UseVisualStyleBackColor = true;
+            // 
+            // btnDeletar
+            // 
+            btnDeletar.Location = new Point(323, 203);
+            btnDeletar.Name = "btnDeletar";
+            btnDeletar.Size = new Size(75, 23);
+            btnDeletar.TabIndex = 17;
+            btnDeletar.Text = "De&letar";
+            btnDeletar.UseVisualStyleBackColor = true;
+            // 
+            // txtBusca
+            // 
+            txtBusca.Location = new Point(126, 265);
+            txtBusca.Name = "txtBusca";
+            txtBusca.Size = new Size(508, 23);
+            txtBusca.TabIndex = 18;
+            txtBusca.TextChanged += txtBusca_TextChanged;
+            // 
             // FrmUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(txtBusca);
+            Controls.Add(btnDeletar);
+            Controls.Add(btnEditar);
             Controls.Add(chkAtivo);
             Controls.Add(label6);
             Controls.Add(txtConfSenha);
             Controls.Add(txtSenha);
             Controls.Add(cmbNivel);
             Controls.Add(txtEmail);
-            Controls.Add(txtName);
+            Controls.Add(txtNome);
             Controls.Add(txtId);
             Controls.Add(btnInserir);
             Controls.Add(label5);
@@ -272,12 +307,15 @@
         private Label label5;
         private Button btnInserir;
         private TextBox txtId;
-        private TextBox txtName;
+        private TextBox txtNome;
         private TextBox txtEmail;
         private ComboBox cmbNivel;
         private TextBox txtSenha;
         private TextBox txtConfSenha;
         private Label label6;
         private CheckBox chkAtivo;
+        private Button btnEditar;
+        private Button btnDeletar;
+        private TextBox txtBusca;
     }
 }

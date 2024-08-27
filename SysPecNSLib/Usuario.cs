@@ -67,6 +67,15 @@ namespace SysPecNSLib
             }
 
         }
+
+
+
+
+        /// <summary>
+        /// Obter por Id é um método 
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         public static Usuario ObterPorId(int Id)
         {
 
@@ -89,12 +98,20 @@ namespace SysPecNSLib
             return usuario;
         }
 
-        public static List<Usuario> ObterLista()
+        public static List<Usuario> ObterLista(string? nome = "")
         {
             List<Usuario> lista = new();
             var comandosSQL = Banco.Abrir();
             comandosSQL.CommandType = CommandType.Text;
-            comandosSQL.CommandText = "select * from usuarios order by nome limit 10";
+            if (nome=="")
+            {
+                comandosSQL.CommandText = "select * from usuarios order by nome";
+            }
+            else 
+            {
+                comandosSQL.CommandText = "select * from usuarios where nome " + $"like '%{nome}%' order by nome";
+            }
+            
             var dr = comandosSQL.ExecuteReader();
             while(dr.Read())
             {
