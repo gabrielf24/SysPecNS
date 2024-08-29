@@ -6,8 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Data;
+using Org.BouncyCastle.Cms;
+using System.ComponentModel.DataAnnotations;
 
-
+/*
 namespace SysPecNSLib
 {
     public class Cliente
@@ -17,8 +19,8 @@ namespace SysPecNSLib
         public string? Cpf { get; set; }
         public string? Telefone { get; set; }
         public string? Email { get; set; }
-        public DateOnly? Data_Nasc { get; set; }
-        public DateOnly? Data_Cad { get; set; }
+        public DateTime? Data_Nasc { get; set; }
+        public DateTime? Data_Cad { get; set; }
         public bool Ativo { get; set; }
 
 
@@ -27,7 +29,7 @@ namespace SysPecNSLib
 
         }
 
-        public Cliente(string? nome, string? cpf, string? telefone, string? email, DateOnly? data_nasc, DateOnly? data_cad)
+        public Cliente(string? nome, string? cpf, string? telefone, string? email, DateTime? data_nasc, DateTime? data_cad)
         {
             Nome = nome;
             Cpf = cpf;
@@ -37,7 +39,7 @@ namespace SysPecNSLib
             Data_Cad = data_cad;
         }
 
-        public Cliente(int id , string? nome, string? cpf, string? telefone, string? email, DateOnly? data_nasc, DateOnly? data_cad, bool ativo)
+        public Cliente(int id, string? nome, string? cpf, string? telefone, string? email, DateTime? data_nasc, DateTime data_cad, bool ativo)
         {
             Id = id;
             Nome = nome;
@@ -51,7 +53,7 @@ namespace SysPecNSLib
 
         public void Inserir()
         {
-           var cmd = Banco.Abrir();
+            var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_cliente_insert";
             cmd.Parameters.AddWithValue("spnome", Nome);
@@ -61,7 +63,7 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spdata_nasc", Data_Nasc);
             cmd.Parameters.AddWithValue("spdata_cad", Data_Cad);
             var dr = cmd.ExecuteReader();
-            while(dr.Read())
+            while (dr.Read())
             {
                 Id = dr.GetInt32(0);
             }
@@ -75,12 +77,77 @@ namespace SysPecNSLib
         public static Cliente ObterPorId(int Id)
         {
 
-            Cliente usuario = new();
-
+            Cliente cliente = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"select * from clientes where id = {Id}";
+            var dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                cliente = new(
+                    dr.GetInt32(0),
+                    dr.GetString(1),
+                    dr.GetString(2),
+                    dr.GetString(4),
+                    dr.GetString(5),
+                    dr.GetDateTime(6),
+                    dr.GetDateTime(7),
+                    dr.GetBoolean(8)
+                    );
+            }
+            return cliente;
         }
+
+        public static List<Cliente> ObterLista(string? nome = "")
+        {
+            List<Cliente> lista = new();
+            var comandosSQL = Banco.Abrir();
+            comandosSQL.CommandType = CommandType.Text;
+            if (nome=="")
+            {
+                comandosSQL.CommandText = "select * from clientes order by nome";
+            }
+            else
+            {
+                comandosSQL.CommandText = "select * from clientes where nome " + $"Like '%{nome}%' order by nome";
+            }
+
+            var dr = comandosSQL.ExecuteReader();
+            while(dr.Read())
+            {
+                lista.Add(
+                    new(
+                        dr.GetInt32(0),
+                        dr.GetString(1),
+                        dr.GetString(2),
+                        dr.GetString(4),
+                        dr.GetString(5),
+                        dr.GetDateTime(6),
+                        dr.GetDateTime(7),
+                        dr.GetBoolean(8)
+                        )
+                    );
+            }
+            return lista;
+        }
+
+        public static Cliente EfetuarLogin(string cpf, string senha)
+        {
+            Cliente cliente = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"select * from clientes where cpf = {cpf}, and senha = md5('{senha}')";
+            var dr = cmd.ExecuteReader();
+            if(dr.Read())
+            {
+                cliente = new
+            }
+        }
+
 
 
 
 
     }
 }
+   */

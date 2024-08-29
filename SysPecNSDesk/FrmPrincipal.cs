@@ -30,7 +30,7 @@ namespace SysPecNSDesk
 
         private void novoToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void novoToolStripMenuItem2_Click_1(object sender, EventArgs e)
@@ -40,6 +40,18 @@ namespace SysPecNSDesk
             frmUsuario.Show();
 
             //frmUsuario.ShowDialog();
+        }
+
+        private void cadastroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var msg = MessageBox.Show("Desejá Sair?", "Confirmação de saída", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if(msg==DialogResult.Yes) Application.Exit();
+            
         }
     }
 }

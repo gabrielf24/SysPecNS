@@ -53,6 +53,7 @@
             btnEditar = new Button();
             btnDeletar = new Button();
             txtBusca = new TextBox();
+            btnCancelar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             SuspendLayout();
             // 
@@ -106,7 +107,7 @@
             dgvUsuarios.RowHeadersVisible = false;
             dgvUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUsuarios.Size = new Size(508, 154);
-            dgvUsuarios.TabIndex = 1;
+            dgvUsuarios.TabIndex = 9;
             dgvUsuarios.CellContentClick += dgvUsuarios_CellContentClick;
             // 
             // label1
@@ -115,7 +116,7 @@
             label1.Location = new Point(115, 39);
             label1.Name = "label1";
             label1.Size = new Size(18, 15);
-            label1.TabIndex = 2;
+            label1.TabIndex = 10;
             label1.Text = "ID";
             label1.Click += label1_Click;
             // 
@@ -125,7 +126,7 @@
             label2.Location = new Point(171, 39);
             label2.Name = "label2";
             label2.Size = new Size(40, 15);
-            label2.TabIndex = 3;
+            label2.TabIndex = 11;
             label2.Text = "Nome";
             label2.Click += label2_Click;
             // 
@@ -135,7 +136,7 @@
             label3.Location = new Point(118, 89);
             label3.Name = "label3";
             label3.Size = new Size(36, 15);
-            label3.TabIndex = 4;
+            label3.TabIndex = 12;
             label3.Text = "Email";
             // 
             // label4
@@ -144,7 +145,7 @@
             label4.Location = new Point(404, 89);
             label4.Name = "label4";
             label4.Size = new Size(34, 15);
-            label4.TabIndex = 5;
+            label4.TabIndex = 13;
             label4.Text = "Nivel";
             // 
             // label5
@@ -153,16 +154,25 @@
             label5.Location = new Point(115, 135);
             label5.Name = "label5";
             label5.Size = new Size(39, 15);
-            label5.TabIndex = 6;
+            label5.TabIndex = 14;
             label5.Text = "Senha";
             // 
             // btnInserir
             // 
-            btnInserir.Location = new Point(115, 203);
+            btnInserir.Cursor = Cursors.Hand;
+            btnInserir.FlatAppearance.BorderSize = 0;
+            btnInserir.FlatAppearance.MouseDownBackColor = Color.ForestGreen;
+            btnInserir.FlatAppearance.MouseOverBackColor = Color.DarkGreen;
+            btnInserir.FlatStyle = FlatStyle.Flat;
+            btnInserir.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold);
+            btnInserir.ForeColor = Color.ForestGreen;
+            btnInserir.Image = Properties.Resources.Add;
+            btnInserir.Location = new Point(90, 203);
             btnInserir.Name = "btnInserir";
-            btnInserir.Size = new Size(75, 23);
-            btnInserir.TabIndex = 7;
+            btnInserir.Size = new Size(94, 40);
+            btnInserir.TabIndex = 5;
             btnInserir.Text = "&Inserir";
+            btnInserir.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnInserir.UseVisualStyleBackColor = true;
             btnInserir.Click += btnInserir_Click;
             // 
@@ -179,7 +189,7 @@
             txtNome.Location = new Point(171, 57);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(227, 23);
-            txtNome.TabIndex = 9;
+            txtNome.TabIndex = 0;
             txtNome.TextChanged += txtNome_TextChanged;
             // 
             // txtEmail
@@ -187,7 +197,7 @@
             txtEmail.Location = new Point(115, 107);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(283, 23);
-            txtEmail.TabIndex = 10;
+            txtEmail.TabIndex = 1;
             txtEmail.TextChanged += textBox3_TextChanged;
             // 
             // cmbNivel
@@ -196,14 +206,14 @@
             cmbNivel.Location = new Point(404, 107);
             cmbNivel.Name = "cmbNivel";
             cmbNivel.Size = new Size(121, 23);
-            cmbNivel.TabIndex = 11;
+            cmbNivel.TabIndex = 2;
             // 
             // txtSenha
             // 
             txtSenha.Location = new Point(115, 153);
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(100, 23);
-            txtSenha.TabIndex = 12;
+            txtSenha.TabIndex = 3;
             txtSenha.UseSystemPasswordChar = true;
             txtSenha.TextChanged += txtSenha_TextChanged;
             // 
@@ -212,8 +222,9 @@
             txtConfSenha.Location = new Point(221, 153);
             txtConfSenha.Name = "txtConfSenha";
             txtConfSenha.Size = new Size(100, 23);
-            txtConfSenha.TabIndex = 13;
+            txtConfSenha.TabIndex = 4;
             txtConfSenha.UseSystemPasswordChar = true;
+            txtConfSenha.TextChanged += txtConfSenha_TextChanged;
             // 
             // label6
             // 
@@ -221,7 +232,7 @@
             label6.Location = new Point(221, 135);
             label6.Name = "label6";
             label6.Size = new Size(92, 15);
-            label6.TabIndex = 14;
+            label6.TabIndex = 15;
             label6.Text = "Confirma Senha";
             // 
             // chkAtivo
@@ -236,36 +247,53 @@
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(221, 203);
+            btnEditar.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold);
+            btnEditar.Location = new Point(190, 203);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(75, 23);
-            btnEditar.TabIndex = 16;
+            btnEditar.Size = new Size(75, 40);
+            btnEditar.TabIndex = 6;
             btnEditar.Text = "&Editar";
             btnEditar.UseVisualStyleBackColor = true;
             // 
             // btnDeletar
             // 
-            btnDeletar.Location = new Point(323, 203);
+            btnDeletar.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold);
+            btnDeletar.Location = new Point(265, 203);
             btnDeletar.Name = "btnDeletar";
-            btnDeletar.Size = new Size(75, 23);
-            btnDeletar.TabIndex = 17;
+            btnDeletar.Size = new Size(75, 40);
+            btnDeletar.TabIndex = 7;
             btnDeletar.Text = "De&letar";
             btnDeletar.UseVisualStyleBackColor = true;
+            btnDeletar.Click += btnDeletar_Click;
             // 
             // txtBusca
             // 
             txtBusca.Location = new Point(126, 265);
             txtBusca.Name = "txtBusca";
             txtBusca.Size = new Size(508, 23);
-            txtBusca.TabIndex = 18;
+            txtBusca.TabIndex = 8;
             txtBusca.TextChanged += txtBusca_TextChanged;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold);
+            btnCancelar.Location = new Point(346, 203);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(75, 40);
+            btnCancelar.TabIndex = 7;
+            btnCancelar.Text = "&Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // FrmUsuario
             // 
+            AcceptButton = btnInserir;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = btnCancelar;
             ClientSize = new Size(800, 450);
             Controls.Add(txtBusca);
+            Controls.Add(btnCancelar);
             Controls.Add(btnDeletar);
             Controls.Add(btnEditar);
             Controls.Add(chkAtivo);
@@ -284,6 +312,7 @@
             Controls.Add(label1);
             Controls.Add(dgvUsuarios);
             Name = "FrmUsuario";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmUsuario";
             Load += FrmUsuario_Load;
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
@@ -317,5 +346,6 @@
         private Button btnEditar;
         private Button btnDeletar;
         private TextBox txtBusca;
+        private Button btnCancelar;
     }
 }

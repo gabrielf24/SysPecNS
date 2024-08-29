@@ -27,13 +27,9 @@ namespace SysPecNSDesk
             cmbNivel.DisplayMember = "Nome";
             cmbNivel.ValueMember = "Id";
             CarregaGrid();
-           
-        }
-
-        private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
         }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -94,7 +90,7 @@ namespace SysPecNSDesk
 
         private void txtBusca_TextChanged(object sender, EventArgs e)
         {
-            if(txtBusca.Text.Length>0)
+            if (txtBusca.Text.Length > 0)
             {
                 CarregaGrid(txtBusca.Text);
             }
@@ -102,7 +98,7 @@ namespace SysPecNSDesk
             {
                 CarregaGrid();
             }
-               
+
         }
         private void CarregaGrid(string nome = "")
         {
@@ -121,6 +117,49 @@ namespace SysPecNSDesk
 
                 cont++;
             }
+        }
+
+        private void btnDeletar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            if (VerificaControles())
+            {
+                var msg = MessageBox.Show("Desejá continuar o cadastro?", "Cadastro de usuário", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                if (msg == DialogResult.No) this.Close();
+            }
+            else
+            {
+                Close();
+            }
+        }
+
+        private bool VerificaControles()
+        {
+            if (txtNome.Text != string.Empty
+                || txtEmail.Text != string.Empty
+                || txtSenha.Text != string.Empty)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int id = 0;
+            int posicaoLinha = dgvUsuarios.CurrentRow.Index;
+            id = Convert.ToInt32(dgvUsuarios.Rows[0].Cells[0].Value);
+            MessageBox.Show(id.ToString());
+        }
+        private void txtConfSenha_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
