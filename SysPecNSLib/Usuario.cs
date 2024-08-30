@@ -155,7 +155,7 @@ namespace SysPecNSLib
             // usuario: nome, senha, nível... 
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_usuario_atleta";
+            cmd.CommandText = "sp_usuario_altera";
             //cmd.Parameters.Add("spid",MySqlDbType.Int32).Value = Id;
             cmd.Parameters.AddWithValue("spid", Id);
             cmd.Parameters.AddWithValue("spnome", Nome);

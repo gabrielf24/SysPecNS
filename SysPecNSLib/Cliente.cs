@@ -8,8 +8,9 @@ using System.Web;
 using System.Data;
 using Org.BouncyCastle.Cms;
 using System.ComponentModel.DataAnnotations;
+using Org.BouncyCastle.Tls;
 
-/*
+
 namespace SysPecNSLib
 {
     public class Cliente
@@ -88,11 +89,11 @@ namespace SysPecNSLib
                     dr.GetInt32(0),
                     dr.GetString(1),
                     dr.GetString(2),
+                    dr.GetString(3),
                     dr.GetString(4),
-                    dr.GetString(5),
+                    dr.GetDateTime(5),
                     dr.GetDateTime(6),
-                    dr.GetDateTime(7),
-                    dr.GetBoolean(8)
+                    dr.GetBoolean(7)
                     );
             }
             return cliente;
@@ -120,34 +121,46 @@ namespace SysPecNSLib
                         dr.GetInt32(0),
                         dr.GetString(1),
                         dr.GetString(2),
+                        dr.GetString(3),
                         dr.GetString(4),
-                        dr.GetString(5),
+                        dr.GetDateTime(5),
                         dr.GetDateTime(6),
-                        dr.GetDateTime(7),
-                        dr.GetBoolean(8)
+                        dr.GetBoolean(7)
                         )
                     );
             }
             return lista;
         }
-
-        public static Cliente EfetuarLogin(string cpf, string senha)
+       
+        public void Atualizar()
         {
-            Cliente cliente = new();
+            //cliente: nome, telefone, email, ativo;
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_cliente_update";
+            cmd.Parameters.AddWithValue("spid", Id);
+            cmd.Parameters.AddWithValue("spnome", Nome);
+            cmd.Parameters.AddWithValue("sptelefone", Telefone);
+            cmd.Parameters.AddWithValue("spemail", Email);
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+
+        }
+        public static void Arquivar(int id)
+        {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from clientes where cpf = {cpf}, and senha = md5('{senha}')";
-            var dr = cmd.ExecuteReader();
-            if(dr.Read())
-            {
-                cliente = new
-            }
+            cmd.CommandText = $"update clientes set ativo = 0 where id = {id}";
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
         }
+        public static void Restaurar(int id)
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"update clientes set ativo = 1 where id = {id}";
 
-
-
-
-
+        }
     }
 }
-   */
+   
