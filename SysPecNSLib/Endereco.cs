@@ -7,7 +7,7 @@ using System.Reflection.Metadata;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-
+/*
 namespace SysPecNSLib
 {
     public class Endereco
@@ -109,4 +109,4 @@ namespace SysPecNSLib
     }
 
     public static List<Endereco> ObterLista(string? )
-}
+} */

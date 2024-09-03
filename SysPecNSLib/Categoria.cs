@@ -30,6 +30,12 @@ namespace SysPecNSLib
             Nome = nome;
             Sigla = sigla;
         }
+        public Categoria(int id, string? nome)
+        {
+            Id = id;
+            Nome = nome;
+           
+        }
 
         public void Inserir()
         {
@@ -50,15 +56,14 @@ namespace SysPecNSLib
             {
                 categoria = new(
                     dr.GetInt32(0),
-                    dr.GetString(1),
-                    dr.GetString(2)
+                    dr.GetString(1)
                     );
             }
 
             return categoria;
         }
 
-        public List<Categoria> ObterLista()
+        public static List<Categoria> ObterLista()
         {
             List<Categoria> categoria = new();
             var cmd = Banco.Abrir();
@@ -66,11 +71,11 @@ namespace SysPecNSLib
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                categoria.Add(new(
+                categoria.Add(
+                    new(
                     dr.GetInt32(0),
                     dr.GetString(1),
-                    dr.GetString(2)
-                    ));
+                    null ));
             }
 
             return categoria;

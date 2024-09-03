@@ -22,9 +22,7 @@ namespace SysPecNSLib
         public double ClasseDesconto { get; set; }
         public byte[]? Imagem { get; set; }
         public DateTime DataCad { get; set; }
-        public Produto() 
-        { 
-     }
+        public Produto() {}
 
         public Produto(string codBar, string descricao, double valor_unit, string unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto)
         {
@@ -140,9 +138,9 @@ namespace SysPecNSLib
                     Categoria.ObterPorId(dr.GetInt32(5)),
                     dr.GetDouble(6),
                     dr.GetDouble(7),
-                    (byte[])dr.GetValue(8),
+                    null,
                     dr.GetDateTime(9)
-                    ));
+                    )); ;
             }
             return produtos;
         }
