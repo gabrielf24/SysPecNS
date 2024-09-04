@@ -10,19 +10,19 @@ namespace SysPecNSLib
 {
     public class Produto
     {
-
-
         public int Id { get; set; }
-        public string CodBar { get; set; }
-        public string Descricao { get; set; }
+        public string? CodBar { get; set; }
+        public string? Descricao { get; set; }
         public double Valor_unit { get; set; }
-        public string UnidadeVenda { get; set; }
+        public string? UnidadeVenda { get; set; }
         public Categoria? Categoria { get; set; }
         public double EstoqueMinimo { get; set; }
         public double ClasseDesconto { get; set; }
         public byte[]? Imagem { get; set; }
-        public DateTime DataCad { get; set; }
-        public Produto() {}
+        public DateTime? DataCad { get; set; }
+        public Produto() {
+        
+        }
 
         public Produto(string codBar, string descricao, double valor_unit, string unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto)
         {
@@ -46,7 +46,7 @@ namespace SysPecNSLib
             ClasseDesconto = classeDesconto;
             Imagem = imagem;
         }
-        public Produto(string codBar, string descricao, double valor_unit, string unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto, byte[]? imagem, DateTime dataCad)
+        public Produto(string codBar, string descricao, double valor_unit, string unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto, byte[]? imagem = null, DateTime? dataCad = null)
         {
             CodBar = codBar;
             Descricao = descricao;
@@ -58,7 +58,7 @@ namespace SysPecNSLib
             Imagem = imagem;
             DataCad = dataCad;
         }
-        public Produto(int id, string codBar, string descricao, double valor_unit, string unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto, byte[]? imagem, DateTime dataCad)
+        public Produto(int id, string codBar, string descricao, double valor_unit, string unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto, byte[]? imagem = null, DateTime? dataCad = null)
         {
             Id = id;
             CodBar = codBar;
@@ -98,7 +98,7 @@ namespace SysPecNSLib
             cmd.ExecuteNonQuery();
         }
 
-        public static Produto ObterPorId(int Id, Categoria Categoria)
+        public static Produto ObterPorId(int Id)
         {
             Produto produto = new();
             var cmd = Banco.Abrir();
@@ -140,7 +140,7 @@ namespace SysPecNSLib
                     dr.GetDouble(7),
                     null,
                     dr.GetDateTime(9)
-                    )); ;
+                    ));
             }
             return produtos;
         }

@@ -181,19 +181,12 @@ namespace SysPecNSLib
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
-
-
-
-
-
-
-
-
-
     }
 
     internal class MySqlDbType
     {
-        internal static MySql.Data.MySqlClient.MySqlDbType Int32;
+    internal static MySql.Data.MySqlClient.MySqlDbType Int32;
     }
+    
+        
 }

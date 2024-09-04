@@ -167,7 +167,7 @@
             btnInserir.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold);
             btnInserir.ForeColor = Color.ForestGreen;
             btnInserir.Image = Properties.Resources.Add;
-            btnInserir.Location = new Point(90, 203);
+            btnInserir.Location = new Point(115, 203);
             btnInserir.Name = "btnInserir";
             btnInserir.Size = new Size(94, 40);
             btnInserir.TabIndex = 5;
@@ -249,7 +249,7 @@
             // btnEditar
             // 
             btnEditar.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold);
-            btnEditar.Location = new Point(190, 203);
+            btnEditar.Location = new Point(215, 203);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(75, 40);
             btnEditar.TabIndex = 6;
@@ -259,7 +259,7 @@
             // btnDeletar
             // 
             btnDeletar.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold);
-            btnDeletar.Location = new Point(265, 203);
+            btnDeletar.Location = new Point(296, 203);
             btnDeletar.Name = "btnDeletar";
             btnDeletar.Size = new Size(75, 40);
             btnDeletar.TabIndex = 7;
@@ -278,7 +278,7 @@
             // btnCancelar
             // 
             btnCancelar.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold);
-            btnCancelar.Location = new Point(346, 203);
+            btnCancelar.Location = new Point(377, 203);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 40);
             btnCancelar.TabIndex = 7;
