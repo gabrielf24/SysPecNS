@@ -24,7 +24,7 @@ namespace SysPecNSDesk
 
         private void produtosToolStripMenuItem_Click(object sender, ToolStripItemClickedEventArgs e)
         {
-        
+
 
         }
 
@@ -50,8 +50,15 @@ namespace SysPecNSDesk
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var msg = MessageBox.Show("Desejá Sair?", "Confirmação de saída", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
-            if(msg==DialogResult.Yes) Application.Exit();
-            
+            if (msg == DialogResult.Yes) Application.Exit();
+
+        }
+
+        private void novoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmProduto frmProduto = new();
+            frmProduto.MdiParent = this;
+            frmProduto.Show();
         }
     }
 }

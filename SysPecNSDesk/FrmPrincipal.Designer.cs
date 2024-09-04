@@ -36,6 +36,7 @@
             listaToolStripMenuItem = new ToolStripMenuItem();
             produtosToolStripMenuItem = new ToolStripMenuItem();
             novoToolStripMenuItem1 = new ToolStripMenuItem();
+            listarToolStripMenuItem = new ToolStripMenuItem();
             usuariosToolStripMenuItem = new ToolStripMenuItem();
             novoToolStripMenuItem2 = new ToolStripMenuItem();
             movimentoToolStripMenuItem = new ToolStripMenuItem();
@@ -43,7 +44,6 @@
             operaçãoToolStripMenuItem = new ToolStripMenuItem();
             caixaToolStripMenuItem = new ToolStripMenuItem();
             sairToolStripMenuItem = new ToolStripMenuItem();
-            listarToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -95,6 +95,13 @@
             novoToolStripMenuItem1.Name = "novoToolStripMenuItem1";
             novoToolStripMenuItem1.Size = new Size(180, 22);
             novoToolStripMenuItem1.Text = "&Novo";
+            novoToolStripMenuItem1.Click += novoToolStripMenuItem1_Click;
+            // 
+            // listarToolStripMenuItem
+            // 
+            listarToolStripMenuItem.Name = "listarToolStripMenuItem";
+            listarToolStripMenuItem.Size = new Size(180, 22);
+            listarToolStripMenuItem.Text = "&Listar";
             // 
             // usuariosToolStripMenuItem
             // 
@@ -142,12 +149,6 @@
             sairToolStripMenuItem.Size = new Size(38, 20);
             sairToolStripMenuItem.Text = "&Sair";
             sairToolStripMenuItem.Click += sairToolStripMenuItem_Click;
-            // 
-            // listarToolStripMenuItem
-            // 
-            listarToolStripMenuItem.Name = "listarToolStripMenuItem";
-            listarToolStripMenuItem.Size = new Size(180, 22);
-            listarToolStripMenuItem.Text = "&Listar";
             // 
             // FrmPrincipal
             // 
