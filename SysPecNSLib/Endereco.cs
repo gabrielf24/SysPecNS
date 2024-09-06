@@ -7,7 +7,7 @@ using System.Reflection.Metadata;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-/*
+
 namespace SysPecNSLib
 {
     public class Endereco
@@ -21,14 +21,14 @@ namespace SysPecNSLib
         public string? Bairro { get; set; }
         public string? Cidade { get; set; }
         public string? Uf { get; set; }
-        public string? Tipo_endereco { get; set; }
+        public string? Tipoendereco { get; set; }
 
         public Endereco()
         {
             Cliente = new();
         }
 
-        public Endereco(Cliente cliente, string? cep, string? logradouro, string? numero, string? complemento, string? bairro, string? cidade, string? uf, string? tipo_endereco)
+        public Endereco(Cliente cliente, string? cep, string? logradouro, string? numero, string? complemento, string? bairro, string? cidade, string? uf, string? tipoendereco)
         {
             Cliente = cliente;
             Cep = cep;
@@ -38,10 +38,10 @@ namespace SysPecNSLib
             Bairro = bairro;
             Cidade = Cidade;
             Uf = uf;
-            Tipo_endereco = tipo_endereco;
+            Tipoendereco = tipoendereco;
         }
 
-        public Endereco(int id,Cliente cliente, string? cep, string? logradouro, string? numero, string? complemento, string? bairro, string? cidade, string? uf, string? tipo_endereco)
+        public Endereco(int id,Cliente cliente, string? cep, string? logradouro, string? numero, string? complemento, string? bairro, string? cidade, string? uf, string? tipoendereco)
         {
             Id = id;
             Cliente = cliente;
@@ -52,7 +52,7 @@ namespace SysPecNSLib
             Bairro = bairro;
             Cidade = Cidade;
             Uf = uf;
-            Tipo_endereco = tipo_endereco;
+            Tipoendereco = tipoendereco;
         }
 
         public void Inserir()
@@ -68,7 +68,7 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spbairro", Bairro);
             cmd.Parameters.AddWithValue("spcidade", Cidade);
             cmd.Parameters.AddWithValue("spuf", Uf);
-            cmd.Parameters.AddWithValue("spctipo_endereco", Tipo_endereco);
+            cmd.Parameters.AddWithValue("spctipo_endereco", Tipoendereco);
             var dr = cmd.ExecuteReader();
             while(dr.Read())
             {
@@ -106,18 +106,16 @@ namespace SysPecNSLib
             }
             return endereco;
         }
-    }
-
-    public static List<Endereco> ObterLista()
-    {
-        List<Endereco> endereco = new();
-        var cmd = Banco.Abrir();
-        cmd.CommandText = $"select * from endereco";
-        var dr = cmd.ExecuteReader();
-        while (dr.Read())
+        public static List<Endereco> ObterLista()
         {
+            List<Endereco> endereco = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandText = $"select * from endereco";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
             {
-                endereco.Add(new(
+                    endereco.Add(
+                    new(
                     dr.GetInt32(0),
                     Cliente.ObterPorId(dr.GetInt32(1)),
                     dr.GetString(2),
@@ -132,7 +130,32 @@ namespace SysPecNSLib
             }
             return endereco;
         }
-
+ 
+        public void Atualizar()
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "sp_endereco_update";
+            cmd.Parameters.AddWithValue("spcep", Cep);
+            cmd.Parameters.AddWithValue("splogradouro", Logradouro);
+            cmd.Parameters.AddWithValue("spnumero", Numero);
+            cmd.Parameters.AddWithValue("spcomplemento", Complemento);
+            cmd.Parameters.AddWithValue("spbairro", Bairro);
+            cmd.Parameters.AddWithValue("spcidade", Cidade);
+            cmd.Parameters.AddWithValue("spuf", Uf);
+            cmd.Parameters.AddWithValue("sptipo_endereco", Tipoendereco);
+            cmd.ExecuteNonQuery();
+        }
+        public void Deletar()
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandText = $"delete from enderecos where id = {Id}";
+        }
     }
-} */
+
+
+    
+
+    
+} 
 

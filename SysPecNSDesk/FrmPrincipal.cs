@@ -19,7 +19,11 @@ namespace SysPecNSDesk
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-
+            FrmLogin frmLogin = new();
+            //frmLogin.MdiParent = this;
+            frmLogin.ShowDialog();
+            Text += $" ({Program.UsuarioLogado.Email})"; 
+            toolStripStatusLabel1.Text = $"{Program.UsuarioLogado.Nome} - {Program.UsuarioLogado.Nivel.Nome}";
         }
 
         private void produtosToolStripMenuItem_Click(object sender, ToolStripItemClickedEventArgs e)

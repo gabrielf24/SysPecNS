@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SysPecNSLib
 {
-    public class Item_pedido
+    public class Itempedido
     {
     }
 }

@@ -79,23 +79,54 @@ namespace SysPecNSLib
                     );
             }
             return fornecedor;
-
         }
 
-        public static List<Fornecedor> ObterLista(string? nome = "")
+        public static List<Fornecedor> ObterLista(string? razaosoc = "")
         {
             List<Fornecedor> lista = new();
             var comandosSQL = Banco.Abrir();
             comandosSQL.CommandType = CommandType.Text;
-            if(nome=="")
+            if(razaosoc=="")
             {
                 comandosSQL.CommandText = " select * from fornecedores order by nome";
             }
             else
             {
-                comandosSQL.CommandText = "select * from fornecedores where nome" + $"Like '%{nome}%' order by nome";
+                comandosSQL.CommandText = "select * from fornecedores where nome" + $"like '%{razaosoc}%' order by nome";
             }
+
+            var dr = comandosSQL.ExecuteReader();
+            while(dr.Read())
+            {
+                lista.Add(
+                    new(
+                        dr.GetInt32(0),
+                        dr.GetString(1),
+                        dr.GetString(2),
+                        dr.GetString(3),
+                        dr.GetString(4), 
+                        dr.GetString(5),
+                        dr.GetString(6)
+                        )
+                    );
+            }
+            return lista;
         }
+
+        public void Atualizar()
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_fornecedores_update";
+            cmd.Parameters.AddWithValue("spsprazao_social", Razaosoc);
+            cmd.Parameters.AddWithValue("spfantasia", Fantasia);
+            cmd.Parameters.AddWithValue("spcontato", Contato);
+            cmd.Parameters.AddWithValue("sptelefone", Telefone);
+            cmd.Parameters.AddWithValue("spemail", Email);
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
+
 
     }
 

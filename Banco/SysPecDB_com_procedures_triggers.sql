@@ -475,10 +475,10 @@ DELIMITER ;
 
 DELIMITER $$
 USE `syspecdb`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_pedido_insert`(spusuario_id int, spcliente_id int, spstatus char(1), spdesconto decimal(10,2))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_pedido_insert`(spusuario_id int, spcliente_id int)
 begin
 	insert into pedidos
-    values(0, spusuario_id, spcliente_id,default , spstatus, spdesconto);
+    values(0, spusuario_id, spcliente_id,default , 'A',0);
     select last_insert_id();
 end$$
 
@@ -616,7 +616,6 @@ DROP TABLE IF EXISTS `syspecdb`.`vw_pedido`;
 USE `syspecdb`;
 CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `syspecdb`.`vw_pedido` AS select `p`.`id` AS `pedido`,`p`.`cliente_id` AS `cliente`,`ip`.`produto_id` AS `produto`,`ip`.`quantidade` AS `quantidade`,`ip`.`valor_unit` AS `valor_item`,`ip`.`desconto` AS `desc_item`,`p`.`desconto` AS `desc_pedido`,`pr`.`cod_barras` AS `cod_barras`,`pr`.`descricao` AS `descricao` from ((`syspecdb`.`pedidos` `p` join `syspecdb`.`itempedido` `ip` on(`p`.`id` = `ip`.`pedido_id`)) join `syspecdb`.`produtos` `pr` on(`ip`.`produto_id` = `pr`.`id`));
 USE `syspecdb`;
-
 DELIMITER $$
 USE `syspecdb`$$
 CREATE
@@ -643,6 +642,70 @@ END$$
 
 DELIMITER ;
 
+-- -----------------------------------------------------
+-- procedure sp_fornecedores_insert
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `syspecdb`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_fornecedores_insert`(
+    spid int(4), 
+    sprazao_social varchar(100), 
+    spfantasia varchar(40),
+    spcnpj char(14),
+    spcontato varchar(60),
+    sptelefone varchar(45),
+    spemail varchar(60))
+    
+sp_fornecedores_update    begin
+	insert into fornecedores
+	values (
+    0,
+    spid,
+    sprazao_social, 
+    spfantasia, spcnpj, 
+    spcontato, 
+    sptelefone, 
+    spemail
+    );
+	select last_insert_id();
+    end$$
+
+DELIMITER ;
+
+
+-- -----------------------------------------------------
+-- procedure sp_fornecedores_update
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `syspecdb`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_fornecedores_update`(
+    spfornecedores_id int, 
+    sprazao_social varchar(100), 
+    spfantasia varchar(40),
+    spcnpj char(14),
+    spcontato varchar(60),
+    sptelefone varchar(45),
+    spemail varchar(60))
+  
+begin
+update fornecedores set razao_social = sprazao_social,
+	fantasia = sp_fantasia,
+	cnpj = sp_cnpj,
+	contato = sp_contato,
+	telefone = sp_telefone,
+	email = sp_email
+	where id = spid;	
+    end$$
+
+DELIMITER ;
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+
+
+
