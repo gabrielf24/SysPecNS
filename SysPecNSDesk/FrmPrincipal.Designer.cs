@@ -41,6 +41,8 @@
             novoToolStripMenuItem2 = new ToolStripMenuItem();
             movimentoToolStripMenuItem = new ToolStripMenuItem();
             pedidosToolStripMenuItem = new ToolStripMenuItem();
+            novoToolStripMenuItem3 = new ToolStripMenuItem();
+            listaDePedidosToolStripMenuItem = new ToolStripMenuItem();
             operaçãoToolStripMenuItem = new ToolStripMenuItem();
             caixaToolStripMenuItem = new ToolStripMenuItem();
             sairToolStripMenuItem = new ToolStripMenuItem();
@@ -126,12 +128,28 @@
             movimentoToolStripMenuItem.Name = "movimentoToolStripMenuItem";
             movimentoToolStripMenuItem.Size = new Size(81, 20);
             movimentoToolStripMenuItem.Text = "&Movimento";
+            movimentoToolStripMenuItem.Click += movimentoToolStripMenuItem_Click;
             // 
             // pedidosToolStripMenuItem
             // 
+            pedidosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { novoToolStripMenuItem3, listaDePedidosToolStripMenuItem });
             pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
-            pedidosToolStripMenuItem.Size = new Size(116, 22);
+            pedidosToolStripMenuItem.Size = new Size(180, 22);
             pedidosToolStripMenuItem.Text = "&Pedidos";
+            pedidosToolStripMenuItem.Click += pedidosToolStripMenuItem_Click;
+            // 
+            // novoToolStripMenuItem3
+            // 
+            novoToolStripMenuItem3.Name = "novoToolStripMenuItem3";
+            novoToolStripMenuItem3.Size = new Size(180, 22);
+            novoToolStripMenuItem3.Text = "&Novo";
+            novoToolStripMenuItem3.Click += novoToolStripMenuItem3_Click;
+            // 
+            // listaDePedidosToolStripMenuItem
+            // 
+            listaDePedidosToolStripMenuItem.Name = "listaDePedidosToolStripMenuItem";
+            listaDePedidosToolStripMenuItem.Size = new Size(180, 22);
+            listaDePedidosToolStripMenuItem.Text = "&Lista de Pedidos";
             // 
             // operaçãoToolStripMenuItem
             // 
@@ -211,5 +229,7 @@
         private ToolStripMenuItem listarToolStripMenuItem;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel toolStripStatusLabel1;
+        private ToolStripMenuItem novoToolStripMenuItem3;
+        private ToolStripMenuItem listaDePedidosToolStripMenuItem;
     }
 }
