@@ -25,7 +25,7 @@ namespace SysPecNSDesk
             cmbCategoria.DataSource = categorias;
             cmbCategoria.ValueMember = "Id";
             cmbCategoria.DisplayMember = "Nome";
-            
+
 
             var lista = Produto.ObterLista();
             dgvProdutos.Rows.Clear();
@@ -51,12 +51,12 @@ namespace SysPecNSDesk
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
 
-            Produto produto = new(txtCodBar.Text, 
+            Produto produto = new(txtCodBar.Text,
                 txtDescricao.Text,
-           double.Parse(txtValorunit.Text), 
+           double.Parse(txtValorunit.Text),
            txtUnidadeVenda.Text,
            Categoria.ObterPorId(Convert.ToInt32(cmbCategoria.SelectedValue)),
-           (int)nudEstoqueMinimo.Value, 
+           (int)nudEstoqueMinimo.Value,
            double.Parse(txtDesconto.Text)
           );
 
@@ -90,7 +90,7 @@ namespace SysPecNSDesk
             txtId.ReadOnly = true;
             btnConsultar.Text = "&Consultar";
             LimpaControles();
-            FrmProduto_Load(sender, e); 
+            FrmProduto_Load(sender, e);
         }
         private void LimpaControles()
         {
@@ -156,6 +156,9 @@ namespace SysPecNSDesk
 
         }
 
-        
+        private void txtId_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

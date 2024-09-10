@@ -287,6 +287,7 @@
             txtId.ReadOnly = true;
             txtId.Size = new Size(100, 23);
             txtId.TabIndex = 0;
+            txtId.TextChanged += txtId_TextChanged;
             // 
             // dgvProdutos
             // 
