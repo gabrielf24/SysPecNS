@@ -117,22 +117,24 @@ namespace SysPecNSDesk
             var itens = ItemPedido.ObterListaPorPedido(int.Parse(txtIdPedido.Text));
             dgvItensPedido.Rows.Clear();
             int linha = 0;
+            double total = 0;
+            double desconto = 0;
             foreach (var item in itens)
             {
                 dgvItensPedido.Rows.Add();
-                dgvItensPedido.Rows[linha].Cells[0].Value = item.Id;
+                dgvItensPedido.Rows[linha].Cells[0].Value = $"#{linha + 1}";
                 dgvItensPedido.Rows[linha].Cells[1].Value = item.Produto.CodBar;
                 dgvItensPedido.Rows[linha].Cells[2].Value = item.Produto.Descricao;
-                dgvItensPedido.Rows[linha].Cells[3].Value = item.ValorUnit;
-                dgvItensPedido.Rows[linha].Cells[4].Value = item.Quantidade;
+                dgvItensPedido.Rows[linha].Cells[3].Value = item.ValorUnit.ToString("#0.00");
+                dgvItensPedido.Rows[linha].Cells[4].Value = item.Quantidade.ToString("#0.00");
                 dgvItensPedido.Rows[linha].Cells[5].Value = item.Desconto;
-                dgvItensPedido.Rows[linha].Cells[6].Value = item.ValorUnit * item.Quantidade - item.Desconto;
+                dgvItensPedido.Rows[linha].Cells[6].Value = (item.ValorUnit * item.Quantidade - item.Desconto).ToString("#0.00");
                 linha++;
                 total += item.ValorUnit * item.Quantidade - item.Desconto;
-                
-
+                desconto += item.Desconto;
             }
-
+            txtTotal.Text = total.ToString("#0.00");
+            txtDescontoIten.Text = desconto.ToString("#0.00");
         }
 
         private void dgvItensPedido_CellContentClick(object sender, DataGridViewCellEventArgs e)

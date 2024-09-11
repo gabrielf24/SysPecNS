@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="WebCep.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="SysPecNSLib">
       <HintPath>..\SysPecNSLib\bin\Debug\net8.0\SysPecNSLib.dll</HintPath>
     </Reference>

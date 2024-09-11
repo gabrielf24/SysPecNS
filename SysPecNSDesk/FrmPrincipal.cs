@@ -81,5 +81,18 @@ namespace SysPecNSDesk
             frmPedidonovo.MdiParent = this;
             frmPedidonovo.Show();
         }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void novoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCliente frmCliente = new();
+            frmCliente.MdiParent = this;
+            frmCliente.Show();
+        }
     }
 }

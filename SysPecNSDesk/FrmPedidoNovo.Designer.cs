@@ -37,7 +37,7 @@
             txtUsuario = new TextBox();
             grbItens = new GroupBox();
             btnAddIten = new Button();
-            textBox1 = new TextBox();
+            txtTotal = new TextBox();
             label10 = new Label();
             label9 = new Label();
             label8 = new Label();
@@ -69,6 +69,8 @@
             label12 = new Label();
             label13 = new Label();
             label14 = new Label();
+            radioButton1 = new RadioButton();
+            radioButton2 = new RadioButton();
             grbIdentificacao.SuspendLayout();
             grbItens.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvItensPedido).BeginInit();
@@ -144,10 +146,11 @@
             // 
             // grbItens
             // 
+            grbItens.Controls.Add(radioButton2);
+            grbItens.Controls.Add(radioButton1);
             grbItens.Controls.Add(btnAddIten);
-            grbItens.Controls.Add(textBox1);
+            grbItens.Controls.Add(txtTotal);
             grbItens.Controls.Add(label10);
-            grbItens.Controls.Add(label9);
             grbItens.Controls.Add(label8);
             grbItens.Controls.Add(label7);
             grbItens.Controls.Add(label6);
@@ -176,14 +179,14 @@
             btnAddIten.UseVisualStyleBackColor = true;
             btnAddIten.Click += btnAddIten_Click;
             // 
-            // textBox1
+            // txtTotal
             // 
-            textBox1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox1.ForeColor = Color.DarkGreen;
-            textBox1.Location = new Point(535, 323);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(105, 33);
-            textBox1.TabIndex = 12;
+            txtTotal.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtTotal.ForeColor = Color.DarkGreen;
+            txtTotal.Location = new Point(535, 323);
+            txtTotal.Name = "txtTotal";
+            txtTotal.Size = new Size(105, 33);
+            txtTotal.TabIndex = 12;
             // 
             // label10
             // 
@@ -198,7 +201,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(475, 30);
+            label9.Location = new Point(521, 219);
             label9.Name = "label9";
             label9.Size = new Size(57, 15);
             label9.TabIndex = 11;
@@ -459,6 +462,28 @@
             label14.Text = "Total";
             label14.Click += label14_Click;
             // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.Location = new Point(461, 5);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(94, 19);
+            radioButton1.TabIndex = 14;
+            radioButton1.TabStop = true;
+            radioButton1.Text = "radioButton1";
+            radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            radioButton2.AutoSize = true;
+            radioButton2.Location = new Point(463, 30);
+            radioButton2.Name = "radioButton2";
+            radioButton2.Size = new Size(94, 19);
+            radioButton2.TabIndex = 15;
+            radioButton2.TabStop = true;
+            radioButton2.Text = "radioButton2";
+            radioButton2.UseVisualStyleBackColor = true;
+            // 
             // FrmPedidoNovo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -469,6 +494,7 @@
             Controls.Add(label12);
             Controls.Add(label11);
             Controls.Add(txtSubTotal);
+            Controls.Add(label9);
             Controls.Add(txtDescontoItens);
             Controls.Add(txtDescontoIten);
             Controls.Add(textBox2);
@@ -513,7 +539,7 @@
         private TextBox txtValorUnit;
         private TextBox txtCodBar;
         private TextBox txtDescricao;
-        private TextBox textBox1;
+        private TextBox txtTotal;
         private Label label10;
         private TextBox textBox2;
         private TextBox txtDescontoIten;
@@ -532,5 +558,7 @@
         private DataGridViewTextBoxColumn clnDesconto;
         private DataGridViewTextBoxColumn clnTotalItem;
         private TextBox txtCliente;
+        private RadioButton radioButton2;
+        private RadioButton radioButton1;
     }
 }

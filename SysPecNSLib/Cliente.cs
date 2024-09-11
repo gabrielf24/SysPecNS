@@ -39,6 +39,15 @@ namespace SysPecNSLib
             Data_Nasc = data_nasc;
             Data_Cad = data_cad;
         }
+        public Cliente(string? nome, string? cpf, string? telefone, string? email, DateTime? data_nasc, bool ativo)
+        {
+            Nome = nome;
+            Cpf = cpf;
+            Telefone = telefone;
+            Email = email;
+            Data_Nasc = data_nasc;
+            Ativo = ativo;
+        }
 
         public Cliente(int id, string? nome, string? cpf, string? telefone, string? email, DateTime? data_nasc, DateTime data_cad, bool ativo)
         {
