@@ -40,7 +40,17 @@ namespace SysPecNSLib
             Uf = uf;
             Tipoendereco = tipoendereco;
         }
-
+        public Endereco(string? cep, string? logradouro, string? numero, string? complemento, string? bairro, string? cidade, string? uf, string? tipoendereco)
+        {
+            Cep = cep;
+            Logradouro = logradouro;
+            Numero = numero;
+            Complemento = complemento;
+            Bairro = bairro;
+            Cidade = Cidade;
+            Uf = uf;
+            Tipoendereco = tipoendereco;
+        }
         public Endereco(int id,Cliente cliente, string? cep, string? logradouro, string? numero, string? complemento, string? bairro, string? cidade, string? uf, string? tipoendereco)
         {
             Id = id;
@@ -104,6 +114,7 @@ namespace SysPecNSLib
                     dr.GetString(9)
                     );
             }
+            cmd.Connection.Close();
             return endereco;
         }
         public static List<Endereco> ObterLista()
@@ -128,6 +139,7 @@ namespace SysPecNSLib
                     dr.GetString(9)
                     ));
             }
+            cmd.Connection.Close();
             return endereco;
         }
  
@@ -145,11 +157,14 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spuf", Uf);
             cmd.Parameters.AddWithValue("sptipo_endereco", Tipoendereco);
             cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
         }
         public void Deletar()
         {
             var cmd = Banco.Abrir();
             cmd.CommandText = $"delete from enderecos where id = {Id}";
+            cmd.Connection.Close();
+
         }
     }
 

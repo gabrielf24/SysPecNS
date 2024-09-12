@@ -45,6 +45,8 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spnome", Nome);
             cmd.Parameters.AddWithValue("spsigla", Sigla);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.Connection.Close();
+
         }
         public static Categoria ObterPorId(int id)
         {
@@ -59,7 +61,7 @@ namespace SysPecNSLib
                     dr.GetString(1)
                     );
             }
-
+            cmd.Connection.Close();
             return categoria;
         }
 
@@ -77,7 +79,7 @@ namespace SysPecNSLib
                     dr.GetString(1),
                     null ));
             }
-
+            cmd.Connection.Close();
             return categoria;
         }
 
@@ -90,6 +92,8 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spnome", Nome);
             cmd.Parameters.AddWithValue("spsigla", Sigla);
             cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+
         }
 
         public void Deletar()
@@ -97,9 +101,11 @@ namespace SysPecNSLib
             var cmd = Banco.Abrir();
             cmd.CommandText = $"delete form categorias where id = {Id}";
             cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+
         }
-        
-          
+
+
 
     }
 }

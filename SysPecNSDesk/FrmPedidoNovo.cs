@@ -92,7 +92,7 @@ namespace SysPecNSDesk
         }
 
         private void btnAddIten_Click(object sender, EventArgs e)
-        {
+        {   
             ItemPedido item = new(
                 int.Parse(txtIdPedido.Text),
                 produto,

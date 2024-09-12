@@ -77,6 +77,7 @@ namespace SysPecNSLib
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = $"update pedidos set status = {Status} where id = {Id}";
             cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
 
 
         }
@@ -115,6 +116,8 @@ namespace SysPecNSLib
                 //pedido.Cliente = Cliente.ObterPorId(dr.GetInt32(1));
 
             }
+
+            cmd.Connection.Close();
             return pedido;
         }
         public static List<Pedido> ObterLista()
@@ -135,6 +138,7 @@ namespace SysPecNSLib
                     dr.GetDouble(5)
                     ));
             }
+            cmd.Connection.Close();
             return pedidos;
         }
         public static List<Pedido> ObterListaPorCliente(int id)
@@ -156,6 +160,7 @@ namespace SysPecNSLib
                     dr.GetDouble(5)
                     ));
             }
+            cmd.Connection.Close();
             return pedidos;
         }
 
@@ -178,6 +183,7 @@ namespace SysPecNSLib
                     dr.GetDouble(5)
                     ));
             }
+            cmd.Connection.Close();
             return pedidos;
 
         }

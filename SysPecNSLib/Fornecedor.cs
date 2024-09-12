@@ -57,6 +57,7 @@ namespace SysPecNSLib
             {
                 Id = dr.GetInt32(0);
             }
+            cmd.Connection.Close();
         }
 
         public static Fornecedor ObterPorId(int Id)
@@ -78,7 +79,9 @@ namespace SysPecNSLib
                     dr.GetString(6)
                     );
             }
+            cmd.Connection.Close();
             return fornecedor;
+            
         }
 
         public static List<Fornecedor> ObterLista(string? razaosoc = "")
@@ -110,6 +113,7 @@ namespace SysPecNSLib
                         )
                     );
             }
+          
             return lista;
         }
 
@@ -125,6 +129,7 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spemail", Email);
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
+            
         }
 
 

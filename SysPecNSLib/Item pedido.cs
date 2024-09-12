@@ -49,6 +49,7 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spdesconto", Desconto);
             cmd.ExecuteNonQuery();
             Id = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.Connection.Close();
         }
         public static List<ItemPedido> ObterListaPorPedido(int id)
         {
@@ -68,7 +69,7 @@ namespace SysPecNSLib
 
                     ));
             }
-
+            cmd.Connection.Close();
             return Itens;
         }
         //`sp_itempedido_insert`(sppedido_id int, spproduto_id int, spquantidade decimal (10,2), spdesconto decimal(10,2))

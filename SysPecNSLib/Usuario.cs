@@ -65,7 +65,7 @@ namespace SysPecNSLib
             {
                 Id = dr.GetInt32(0);
             }
-
+            
         }
 
 
@@ -95,6 +95,7 @@ namespace SysPecNSLib
                     dr.GetBoolean(5)
                     );
             }
+            cmd.Connection.Close();
             return usuario;
         }
 
@@ -126,6 +127,8 @@ namespace SysPecNSLib
                         )
                     );
             }
+            
+
             return lista;
         }
 
@@ -147,7 +150,7 @@ namespace SysPecNSLib
                     dr.GetBoolean(5)
                 );
             }
-
+            cmd.Connection.Close();
             return usuario;
         }
         public void Atualizar()

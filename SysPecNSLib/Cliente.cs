@@ -77,6 +77,8 @@ namespace SysPecNSLib
             {
                 Id = dr.GetInt32(0);
             }
+            cmd.Connection.Close();
+
         }
 
         /// <summary>
@@ -105,7 +107,8 @@ namespace SysPecNSLib
                     dr.GetBoolean(7)
                     );
             }
-            return cliente;
+            cmd.Connection.Close();
+             return cliente;
         }
 
         public static List<Cliente> ObterLista(string? nome = "")
@@ -138,7 +141,7 @@ namespace SysPecNSLib
                         )
                     );
             }
-            return lista;
+             return lista;
         }
        
         public void Atualizar()
@@ -168,6 +171,7 @@ namespace SysPecNSLib
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = $"update clientes set ativo = 1 where id = {id}";
+            cmd.Connection.Close();
 
         }
     }

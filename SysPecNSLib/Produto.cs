@@ -83,6 +83,7 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spestoque_minimo", EstoqueMinimo);
             cmd.Parameters.AddWithValue("spclasse_desconto", ClasseDesconto);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.Connection.Close();
         }
         public void Atualizar()
         {
@@ -96,6 +97,7 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spestoque_minimo", EstoqueMinimo);
             cmd.Parameters.AddWithValue("spclasse_desconto", ClasseDesconto);
             cmd.ExecuteNonQuery();
+            
         }
 
         public static Produto ObterPorId(int Id)
@@ -119,6 +121,7 @@ namespace SysPecNSLib
                     dr.GetDateTime(9)
                     );
             }
+            cmd.Connection.Close();
             return produto;
         }
         public static Produto ObterPorId(string id)
@@ -129,7 +132,7 @@ namespace SysPecNSLib
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                produto = new(
+                 produto = new(
                     dr.GetInt32(0),
                     dr.GetString(1),
                     dr.GetString(2),
@@ -138,10 +141,11 @@ namespace SysPecNSLib
                     Categoria.ObterPorId(dr.GetInt32(5)),
                     dr.GetDouble(6),
                     dr.GetDouble(7),
-                    (byte[])dr.GetValue(8),
+                   null,
                     dr.GetDateTime(9)
                     );
             }
+            cmd.Connection.Close();
             return produto;
         }
         public static List<Produto> ObterLista()
@@ -165,6 +169,7 @@ namespace SysPecNSLib
                     dr.GetDateTime(9)
                     ));
             }
+            cmd.Connection.Close();
             return produtos;
         }
     }
